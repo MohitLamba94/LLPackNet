@@ -75,12 +75,11 @@ class get_data(Dataset):
     """Loads the Data."""
     
     def __init__(self,opt):
-        self.train_files = glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/short/0*_00_0.1s.ARW')
-        self.train_files = self.train_files + glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/short/2*_00_0.1s.ARW') # The network takes days to train. We recommend you load the full dataset onto RAM which greatly reduces the training time. So choose wisely the number of images that can be loaded into your RAM.
+        self.train_files = glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/short/') # The network takes days to train. We recommend you load the full dataset onto RAM which greatly reduces the training time. So choose wisely the number of images that can be loaded into your RAM.
 
         self.gt_files = []
         for x in self.train_files:
-            self.gt_files =self.gt_files+ glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/long/*'+x[-17:-12]+'*.ARW')
+            self.gt_files =self.gt_files+ glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/long/')
         
         self.to_tensor = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
         
