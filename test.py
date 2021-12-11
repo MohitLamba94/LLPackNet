@@ -76,12 +76,12 @@ class get_data(Dataset):
     """Loads the Data."""
     
     def __init__(self,opt):
-        self.train_files = glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/short/1*_00_0.1s.ARW')
+        self.train_files = glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/short/')
         
 
         self.gt_files = []
         for x in self.train_files:
-            self.gt_files =self.gt_files+ glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/long/*'+x[-17:-12]+'*.ARW')
+            self.gt_files =self.gt_files+ glob.glob('/media/data/mohit/chen_dark_cvpr_18_dataset/Sony/long/')
         
         self.to_tensor = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
         
