@@ -2,8 +2,8 @@
 opt = {'switch':20000}
 opt.update({'lr':1e-4})
 
-opt['dir_root']='/home/mohit/Music/attention_low_light/'
-opt['exp_name'] = 'AVG-sir-amplifier'
+opt['dir_root']=# Enter Root Directory here
+opt['exp_name'] = # Enter Experiment Name
 
 opt['gpu'] = "1"
 opt['epochs'] = 1000000
