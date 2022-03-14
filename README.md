@@ -62,11 +62,9 @@ In regard to the above algorithm, a *naive* implementation of the `UnPack` opera
   iHR = torch.zeros(1,3,H,W, dtype=torch.float).to(self.device)
   counttt=0
   for ii in range(8):
-          for jj in range(8):
-
-              iHR[:,:,ii:H:8,jj:W:8] = iLR[:,counttt:counttt+3,:,:]                    
-              counttt=counttt+3
-
+      for jj in range(8):
+          iHR[:,:,ii:H:8,jj:W:8] = iLR[:,counttt:counttt+3,:,:]                    
+          counttt=counttt+3
 </pre>
 </div>
 
