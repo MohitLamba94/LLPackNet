@@ -78,15 +78,6 @@ However the above code is computationally slow and in PyTorch can be quickly imp
 </pre>
 </div>
 
-# How to use the code?
-The [train.py](https://github.com/MohitLamba94/LLPackNet/blob/master/train.py) and [test.py](https://github.com/MohitLamba94/LLPackNet/blob/master/test.py) files were used for training and testing. Follow the comments mentioned in these files to execute them successfully. You however need to download the [SID dataset](https://github.com/cchen156/Learning-to-See-in-the-Dark) to execute them. 
-
-The Jupyter Notebooks containing test code for the ablation studies mentioned in the paper can be also found in the [ablations directory](https://github.com/MohitLamba94/LLPackNet/tree/master/ablations).
-
-We used `PyTorch version 1.3.1` with `Python 3.7` to conduct the experiment. Along with the commonly used Python libraries such Numpy and Skimage, do install the [Rawpy](https://pypi.org/project/rawpy/) library required to read RAW images.
-
-The code for LLPackNet was written using `PyTorch 1.3.1` and `Python 3.7` running on Ubuntu 16.04 LTS.
-
 # Cite us
 If you find any information provided here useful please cite us,
 
@@ -101,5 +92,10 @@ If you find any information provided here useful please cite us,
 }
 </pre>
 </div>
+
+# Fixing Training Instabilities (Update 2022)
+The project was initially tested for PyTorch `1.3.1`. But with introduction of new commads in the latest PyTorch release we have further squashed more `for loops` with vector commads giving even further speedup. Moreover we discovered that using `iLR.reshape(-1,8,3,H/8,W/8).permute(2,3,0,4,1).reshape(1,3,H,W)` to mimic `UnPack 8x` operations causes training instabilities with with undersaturated black regions. The training thus required logging weights after every few epochs and fine-grain scheduling. The main reason for this instability is the incorrect interation between channel and batch dimension. We thus recommend using `iLR.reshape(-1,8,8,3,H//8,W//8).permute(0,3,4,1,5,2).reshape(-1,3,H,W)`. The overall effect with thus update is that the training becomes much more stable, all underexposed regions vanish, parameter count remains same while offering additional speedup.
+
+
 
 
