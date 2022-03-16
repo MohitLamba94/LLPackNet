@@ -59,11 +59,7 @@ class load_data(Dataset):
                 flag = 0
             else:
                 flag = 1
-        
-        if '00_0.1s.ARW' in self.paths_low[idx]:
-            flag_01 = 1
-        else:
-            flag_01 = 0
+       
 
         print(idx, self.paths_low[idx], self.paths_high[idx], amp, flag)
 
@@ -79,7 +75,6 @@ class load_data(Dataset):
         high = high/65535.0
         img_list.append(torch.from_numpy(high.transpose(2,0,1)))
         img_list.append(flag)
-        img_list.append(flag_01)
         
         return img_list
 
