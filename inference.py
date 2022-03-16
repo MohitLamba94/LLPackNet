@@ -24,7 +24,7 @@ class load_data(Dataset):
 
         assert mode in ["test"], "Only test mode allowed."
 
-        root = '/home/mohit/sid_dataset/Sony/'
+        root = '/path/to/sid_dataset/Sony/'
 
         self.paths_low = sorted(glob.glob(root+'short/1*_00_*.ARW'))
         self.paths_high = []
