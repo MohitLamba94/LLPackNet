@@ -1,0 +1,1 @@
+psnr_avg = 27.9418, ssim_avg = 0.7588, psnr_avg_restricted = 27.9601, ssim_avg_restricted = 0.7586
