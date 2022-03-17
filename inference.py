@@ -142,7 +142,6 @@ if __name__ ==  '__main__':
                 restriction_count+=1
             
             imageio.imwrite(save_inference_images+'/pred_{}.jpg'.format(imgg_numm),pred)
-            imageio.imwrite(save_inference_images+'/high_{}.jpg'.format(imgg_numm),high)
 
     f = open(inference_file,'a')
 
