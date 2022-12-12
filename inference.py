@@ -17,6 +17,8 @@ from skimage.metrics import structural_similarity as SSIM
 import glob
 import rawpy
 
+# Here are some light weight files meant only for a quick start as the SID dataset is quite heavy and requires good CPU compute. You will need to to modify the code at several plaves to adapt for your work.
+
 class load_data(Dataset):
     """Loads the Data."""
     
